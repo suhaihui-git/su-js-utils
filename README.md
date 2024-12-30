@@ -12,6 +12,8 @@
 
 ## 安装
 
+git 地址 https://github.com/suhaihui/su-js-utils
+
 ```bash
 npm install su-js-utils
 ```

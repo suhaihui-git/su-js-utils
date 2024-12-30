@@ -17,6 +17,10 @@ npm config set registry https://registry.npmjs.org/
 echo "开始构建..."
 npm run build
 
+git add .
+
+git commit -m "chore: pre-publish commit [skip ci]"
+
 npm version patch
 # 更新版本号
 echo "更新版本号..."
