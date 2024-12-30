@@ -542,9 +542,9 @@ export const {
   selector: $,
   className: cls,
   style: css,
-  attr,
+  attr: attrs,
   event: evt,
   element: el,
-  form,
+  form: formUtils,
   animation: anim,
 } = domUtils;

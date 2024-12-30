@@ -17,11 +17,22 @@ npm config set registry https://registry.npmjs.org/
 echo "开始构建..."
 npm run build
 
+# 检查并处理 git 状态
+echo "检查 git 状态..."
+if [ -n "$(git status --porcelain)" ]; then
+    echo "发现未提交的更改，正在自动提交..."
+    git add .
+    git commit -m "chore: pre-publish commit [skip ci]"
+fi
 
-# 提示输入新版本号
-echo "更新版本号"
-npm version patch
+# 更新版本号
+echo "更新版本号..."
+new_version=$(npm version $version_type -m "chore: release %s [skip ci]" --force)
+echo "版本已更新至: $new_version"
 
+# 推送到远程仓库
+echo "推送到远程仓库..."
+git push --follow-tags
 
 # 发布到 npm
 echo "开始发布到 npm..."
