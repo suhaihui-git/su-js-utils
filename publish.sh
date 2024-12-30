@@ -30,10 +30,6 @@ echo "更新版本号..."
 new_version=$(npm version $version_type -m "chore: release %s [skip ci]" --force)
 echo "版本已更新至: $new_version"
 
-# 推送到远程仓库
-echo "推送到远程仓库..."
-git push --follow-tags
-
 # 发布到 npm
 echo "开始发布到 npm..."
 npm publish
