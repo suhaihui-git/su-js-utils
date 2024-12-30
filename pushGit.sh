@@ -12,11 +12,9 @@ git add .
 # 提交更改
 git commit -m "$commit_message"
 
-# 添加版本标签
-git tag -a "v$version" -m "Version $version"
+
 
 # 推送到远程仓库
 git push origin main --force
-git push origin --tags
 
 echo "Successfully pushed version v$version to git with message: $commit_message" 
