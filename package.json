@@ -1,6 +1,6 @@
 {
   "name": "su-js-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "type": "module",
   "description": "实用的 JavaScript 字符串和数组工具函数集合",
   "main": "dist/index.js",
