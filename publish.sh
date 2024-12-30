@@ -17,14 +17,7 @@ npm config set registry https://registry.npmjs.org/
 echo "开始构建..."
 npm run build
 
-# 检查并处理 git 状态
-echo "检查 git 状态..."
-if [ -n "$(git status --porcelain)" ]; then
-    echo "发现未提交的更改，正在自动提交..."
-    git add .
-    git commit -m "chore: pre-publish commit [skip ci]"
-fi
-
+npm version patch
 # 更新版本号
 echo "更新版本号..."
 new_version=$(npm version $version_type -m "chore: release %s [skip ci]" --force)
