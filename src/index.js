@@ -3,14 +3,18 @@ import * as arrayUtils from "./arrayUtils/index.js";
 import * as dateUtils from "./dateUtils/index.js";
 import * as domUtils from "./domUtils/index.js";
 import * as verifyUtils from "./verifyUtils/index.js";
-// 默认导出
-export default {
+
+// 创建工具对象
+const utils = {
   string: stringUtils,
   array: arrayUtils,
   date: dateUtils,
   dom: domUtils,
   verify: verifyUtils,
 };
+
+// 默认导出
+export default utils;
 
 // 单独导出
 export const { string, array, date, dom, verify } = utils;
