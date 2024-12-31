@@ -1,23 +1,25 @@
 {
   "name": "su-js-utils",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "type": "module",
   "description": "实用的 JavaScript 字符串和数组工具函数集合",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
       "require": "./dist/index.js",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "scripts": {
     "build": "rollup -c",
     "build:types": "tsc --project tsconfig.json",
     "test": "jest",
-    "prepublishOnly": "npm run build:types && npm run build"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build:types && npm run build"
   },
   "keywords": [
     "utils",
@@ -40,7 +42,6 @@
   },
   "files": [
     "dist",
-    "dist/types",
-    "src/types"
+    "dist/types"
   ]
 }

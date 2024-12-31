@@ -11,8 +11,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "su-js-utils": ["src/types/index.d.ts"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "include": ["src/types/**/*.ts", "src/types/**/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

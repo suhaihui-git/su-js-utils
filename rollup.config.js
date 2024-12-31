@@ -11,12 +11,14 @@ export default {
       format: "cjs",
       exports: "named",
       sourcemap: true,
+      interop: "auto",
     },
     {
       file: "dist/index.esm.js",
       format: "es",
       exports: "named",
       sourcemap: true,
+      interop: "auto",
     },
     {
       file: "dist/index.min.js",
@@ -24,6 +26,7 @@ export default {
       name: "suJsUtils",
       exports: "named",
       sourcemap: true,
+      interop: "auto",
       plugins: [terser()],
     },
   ],
