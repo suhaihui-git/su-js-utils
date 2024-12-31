@@ -15,9 +15,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "build:types": "tsc",
+    "build:types": "tsc --project tsconfig.json",
     "test": "jest",
-    "prepublishOnly": "npm run build && npm run build:types"
+    "prepublishOnly": "npm run build:types && npm run build"
   },
   "keywords": [
     "utils",
@@ -40,6 +40,7 @@
   },
   "files": [
     "dist",
-    "dist/types"
+    "dist/types",
+    "src/types"
   ]
 }

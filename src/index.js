@@ -18,7 +18,6 @@ export default utils;
 
 // 单独导出
 export const { string, array, date, dom, verify } = utils;
-
 // 导出全部
 export * from "./stringUtils/index.js";
 export * from "./arrayUtils/index.js";

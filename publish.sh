@@ -15,6 +15,7 @@ npm config set registry https://registry.npmjs.org/
 
 # 构建项目
 echo "开始构建..."
+npm run build:types
 npm run build
 
 git add .
