@@ -38,10 +38,13 @@ pnpm add su-js-utils
 import suJsUtils from "su-js-utils";
 
 // 使用字符串工具
-suJsUtils.stringUtils.capitalize("hello"); // => "Hello"
+suJsUtils.string.capitalize("hello"); // => "Hello"
 
 // 使用数组工具
-suJsUtils.arrayUtils.unique([1, 1, 2]); // => [1, 2]
+suJsUtils.array.unique([1, 1, 2]); // => [1, 2]
+
+// 使用日期工具
+suJsUtils.date.format(new Date(), "YYYY-MM-DD"); // => "2024-03-15"
 ```
 
 ### 方式 2: 命名空间导入
@@ -49,8 +52,9 @@ suJsUtils.arrayUtils.unique([1, 1, 2]); // => [1, 2]
 ```javascript
 import { string, array, date, dom, verify } from "su-js-utils";
 
-string.capitalize("hello");
-array.unique([1, 1, 2]);
+string.capitalize("hello"); // => "Hello"
+array.unique([1, 1, 2]); // => [1, 2]
+date.format(new Date(), "YYYY-MM-DD"); // => "2024-03-15"
 ```
 
 ### 方式 3: 直接导入具体函数
@@ -63,135 +67,117 @@ unique([1, 1, 2]); // => [1, 2]
 format(new Date()); // => "2024-03-15"
 ```
 
-### TypeScript 支持
-
-```typescript
-import { string, array } from "su-js-utils";
-
-// 完整的类型提示
-const str: string = string.capitalize("hello");
-const arr: number[] = array.unique<number>([1, 1, 2]);
-```
-
 ## API 文档
 
-### 1. 字符串工具 (stringUtils)
+### 1. 字符串工具 (string)
 
 ```javascript
-import { stringUtils } from "su-js-utils";
+import { string } from "su-js-utils";
 
 // 首字母大写
-stringUtils.capitalize("hello"); // => "Hello"
+string.capitalize("hello"); // => "Hello"
 
 // 驼峰转短横线
-stringUtils.camelToKebab("helloWorld"); // => "hello-world"
+string.camelToKebab("helloWorld"); // => "hello-world"
 
 // 短横线转驼峰
-stringUtils.kebabToCamel("hello-world"); // => "helloWorld"
+string.kebabToCamel("hello-world"); // => "helloWorld"
 
 // 截断字符串
-stringUtils.truncate("Hello World", 8); // => "Hello..."
+string.truncate("Hello World", 8); // => "Hello..."
 
 // 移除两端字符
-stringUtils.trim("  hello  "); // => "hello"
+string.trim("  hello  "); // => "hello"
 ```
 
-### 2. 数组工具 (arrayUtils)
+### 2. 数组工具 (array)
 
 ```javascript
-import { arrayUtils } from "su-js-utils";
+import { array } from "su-js-utils";
 
 // 安全获取元素
-arrayUtils.get([1, 2, 3], 1); // => 2
+array.get([1, 2, 3], 1); // => 2
 
 // 去重
-arrayUtils.unique([1, 1, 2, 2, 3]); // => [1, 2, 3]
+array.unique([1, 1, 2, 2, 3]); // => [1, 2, 3]
 
 // 分组
-arrayUtils.chunk([1, 2, 3, 4], 2); // => [[1, 2], [3, 4]]
+array.chunk([1, 2, 3, 4], 2); // => [[1, 2], [3, 4]]
 
 // 扁平化
-arrayUtils.flatten([1, [2, [3, 4]], 5]); // => [1, 2, [3, 4], 5]
+array.flatten([1, [2, [3, 4]], 5]); // => [1, 2, [3, 4], 5]
 ```
 
-### 3. 日期工具 (dateUtils)
+### 3. 日期工具 (date)
 
 ```javascript
-import { dateUtils } from "su-js-utils";
+import { date } from "su-js-utils";
 
 // 格式化日期
-dateUtils.format(new Date(), "YYYY-MM-DD"); // => "2024-03-15"
+date.format(new Date(), "YYYY-MM-DD"); // => "2024-03-15"
 
 // 相对时间
-dateUtils.relativeTime("2024-03-14"); // => "1天前"
+date.relativeTime("2024-03-14"); // => "1天前"
 
 // 判断闰年
-dateUtils.isLeapYear("2024"); // => true
+date.isLeapYear("2024"); // => true
 
 // 获取月份天数
-dateUtils.getDaysInMonth("2024-02"); // => 29
+date.getDaysInMonth("2024-02"); // => 29
 
 // 判断周末
-dateUtils.isWeekend("2024-03-16"); // => true
+date.isWeekend("2024-03-16"); // => true
 ```
 
-### 4. DOM 工具 (domUtils)
+### 4. DOM 工具 (dom)
 
 ```javascript
-import { domUtils } from "su-js-utils";
+import { dom } from "su-js-utils";
 
 // 选择器
-const button = $.get("#myButton");
-const items = $.getAll(".item");
+const button = dom.selector.get("#myButton");
+const items = dom.selector.getAll(".item");
 
 // 类名操作
-cls.add(button, "active");
-cls.toggle(button, "disabled");
+dom.className.add(button, "active");
+dom.className.toggle(button, "disabled");
 
 // 样式操作
-css.set(button, { backgroundColor: "#fff" });
-css.show(button);
+dom.style.set(button, { backgroundColor: "#fff" });
+dom.style.show(button);
 
 // 事件操作
-evt.on(button, "click", () => {});
-evt.once(button, "click", () => {});
+dom.event.on(button, "click", () => {});
+dom.event.once(button, "click", () => {});
 
 // 动画操作
-await anim.fadeIn(element);
-await anim.slideDown(element);
+await dom.animation.fadeIn(element);
+await dom.animation.slideDown(element);
 ```
 
-### 5. 验证工具 (verifyUtils)
+### 5. 验证工具 (verify)
 
 ```javascript
-import { verifyUtils } from "su-js-utils";
+import { verify } from "su-js-utils";
 
 // 字符串验证
-verifyUtils.string.isEmail("test@example.com"); // => true
-verifyUtils.string.isPhone("13812345678"); // => true
+verify.string.isEmail("test@example.com"); // => true
+verify.string.isPhone("13812345678"); // => true
 
 // 密码验证
-verifyUtils.string.validatePassword("Password123!", {
+verify.string.validatePassword("Password123!", {
   minLength: 8,
   requireNumber: true,
   requireSpecialChar: true,
 });
 
 // 数字验证
-verifyUtils.number.isInteger(123); // => true
-verifyUtils.number.inRange(5, 1, 10); // => true
+verify.number.isInteger(123); // => true
+verify.number.inRange(5, 1, 10); // => true
 
 // 日期验证
-verifyUtils.date.isFuture(new Date()); // => false
-verifyUtils.date.inRange(date, start, end);
-```
-
-## 按需引入
-
-可以只引入需要的工具函数，减小打包体积：
-
-```javascript
-import { capitalize, unique, format } from "su-js-utils";
+verify.date.isFuture(new Date()); // => false
+verify.date.inRange(date, start, end); // => true
 ```
 
 ## 浏览器支持
@@ -233,9 +219,7 @@ GitHub: [https://github.com/suhaihui/su-js-utils](https://github.com/suhaihui/su
 
 - 优化 TypeScript 类型支持
 - 修复模块导出问题
-- 修复工具函数命名空间问题
 - 完善文档和示例
-- 添加 DOM 工具简写别名
 
 ### 1.0.10
 
