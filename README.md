@@ -12,16 +12,41 @@
 
 ## 安装
 
-git 地址 https://github.com/suhaihui/su-js-utils
+### NPM
 
 ```bash
 npm install su-js-utils
 ```
 
+### YARN
+
+```bash
+yarn add su-js-utils
+```
+
+### PNPM
+
+```bash
+pnpm add su-js-utils
+```
+
 ## 使用方法
 
+### 方式 1: 默认导入
+
 ```javascript
-// 方式 1: 使用命名空间
+import suJsUtils from "su-js-utils";
+
+// 使用字符串工具
+suJsUtils.string.capitalize("hello"); // => "Hello"
+
+// 使用数组工具
+suJsUtils.array.unique([1, 1, 2]); // => [1, 2]
+```
+
+### 方式 2: 命名空间导入
+
+```javascript
 import {
   stringUtils,
   arrayUtils,
@@ -30,8 +55,28 @@ import {
   verifyUtils,
 } from "su-js-utils";
 
-// 方式 2: 直接导入具体函数
+stringUtils.capitalize("hello");
+arrayUtils.unique([1, 1, 2]);
+```
+
+### 方式 3: 直接导入具体函数
+
+```javascript
 import { capitalize, unique, format } from "su-js-utils";
+
+capitalize("hello"); // => "Hello"
+unique([1, 1, 2]); // => [1, 2]
+format(new Date()); // => "2024-03-15"
+```
+
+### TypeScript 支持
+
+```typescript
+import { stringUtils, ArrayUtils } from "su-js-utils";
+
+// 完整的类型提示
+const str: string = stringUtils.capitalize("hello");
+const arr: number[] = arrayUtils.unique([1, 1, 2]);
 ```
 
 ## API 文档
@@ -182,11 +227,21 @@ npm test
 
 欢迎提交 Issue 和 Pull Request。
 
+## 仓库
+
+GitHub: [https://github.com/suhaihui/su-js-utils](https://github.com/suhaihui/su-js-utils)
+
 ## 许可证
 
 [MIT](LICENSE) © suhaihui
 
 ## 更新日志
+
+### 1.0.22
+
+- 优化 TypeScript 类型支持
+- 修复模块导出问题
+- 完善文档和示例
 
 ### 1.0.10
 
