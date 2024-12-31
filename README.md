@@ -38,25 +38,19 @@ pnpm add su-js-utils
 import suJsUtils from "su-js-utils";
 
 // 使用字符串工具
-suJsUtils.string.capitalize("hello"); // => "Hello"
+suJsUtils.stringUtils.capitalize("hello"); // => "Hello"
 
 // 使用数组工具
-suJsUtils.array.unique([1, 1, 2]); // => [1, 2]
+suJsUtils.arrayUtils.unique([1, 1, 2]); // => [1, 2]
 ```
 
 ### 方式 2: 命名空间导入
 
 ```javascript
-import {
-  stringUtils,
-  arrayUtils,
-  dateUtils,
-  domUtils,
-  verifyUtils,
-} from "su-js-utils";
+import { string, array, date, dom, verify } from "su-js-utils";
 
-stringUtils.capitalize("hello");
-arrayUtils.unique([1, 1, 2]);
+string.capitalize("hello");
+array.unique([1, 1, 2]);
 ```
 
 ### 方式 3: 直接导入具体函数
@@ -72,11 +66,11 @@ format(new Date()); // => "2024-03-15"
 ### TypeScript 支持
 
 ```typescript
-import { stringUtils, ArrayUtils } from "su-js-utils";
+import { string, array } from "su-js-utils";
 
 // 完整的类型提示
-const str: string = stringUtils.capitalize("hello");
-const arr: number[] = arrayUtils.unique([1, 1, 2]);
+const str: string = string.capitalize("hello");
+const arr: number[] = array.unique<number>([1, 1, 2]);
 ```
 
 ## API 文档
@@ -144,27 +138,27 @@ dateUtils.isWeekend("2024-03-16"); // => true
 ### 4. DOM 工具 (domUtils)
 
 ```javascript
-import { domUtils, $ } from "su-js-utils";
+import { domUtils } from "su-js-utils";
 
 // 选择器
 const button = $.get("#myButton");
 const items = $.getAll(".item");
 
 // 类名操作
-domUtils.className.add(button, "active");
-domUtils.className.toggle(button, "disabled");
+cls.add(button, "active");
+cls.toggle(button, "disabled");
 
 // 样式操作
-domUtils.style.set(button, { backgroundColor: "#fff" });
-domUtils.style.show(button);
+css.set(button, { backgroundColor: "#fff" });
+css.show(button);
 
 // 事件操作
-domUtils.event.on(button, "click", () => {});
-domUtils.event.once(button, "click", () => {});
+evt.on(button, "click", () => {});
+evt.once(button, "click", () => {});
 
 // 动画操作
-await domUtils.animation.fadeIn(element);
-await domUtils.animation.slideDown(element);
+await anim.fadeIn(element);
+await anim.slideDown(element);
 ```
 
 ### 5. 验证工具 (verifyUtils)
@@ -197,9 +191,7 @@ verifyUtils.date.inRange(date, start, end);
 可以只引入需要的工具函数，减小打包体积：
 
 ```javascript
-import { capitalize } from "su-js-utils/stringUtils";
-import { unique } from "su-js-utils/arrayUtils";
-import { format } from "su-js-utils/dateUtils";
+import { capitalize, unique, format } from "su-js-utils";
 ```
 
 ## 浏览器支持
@@ -241,7 +233,9 @@ GitHub: [https://github.com/suhaihui/su-js-utils](https://github.com/suhaihui/su
 
 - 优化 TypeScript 类型支持
 - 修复模块导出问题
+- 修复工具函数命名空间问题
 - 完善文档和示例
+- 添加 DOM 工具简写别名
 
 ### 1.0.10
 
