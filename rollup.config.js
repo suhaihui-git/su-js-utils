@@ -14,11 +14,13 @@ export default {
     {
       file: "dist/index.esm.js",
       format: "es",
+      exports: "named",
     },
     {
       file: "dist/index.min.js",
       format: "umd",
-      name: "suJsUtils",
+      name: "YourLibName",
+      exports: "named",
       plugins: [terser()],
     },
   ],
